@@ -11,14 +11,11 @@
 import { useControlData } from '@/stores/useControlData';
 const controlData = useControlData()
 
-const emit = defineEmits()
-
 const props = defineProps<{
     index: number
 }>()
 
 const delItem = (index: number) => {
-    emit('delIndex', props.index)
     controlData.delItem(index)
 }
 

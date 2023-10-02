@@ -13,6 +13,7 @@ interface Data {
     category: string;
     thumbnail: string;
     images: string[];
+    [key: string]: number | string | string[];
 }
 
 export const useControlData = defineStore('useControlData', () => {
@@ -21,7 +22,6 @@ export const useControlData = defineStore('useControlData', () => {
 
     let detailState = ref<boolean>(false);
     let detaiIndex = ref<number>(0);
-    let detailObj = ref<Data>();
 
     function setNewVal(newData: Data[]): void {
         data.value = newData;
@@ -32,19 +32,18 @@ export const useControlData = defineStore('useControlData', () => {
     }
     function delItem(index: number): void {
         data?.value?.splice(index, 1);
-        console.log('删除数据', index, data.value);
+    }
+    function editItem(index: number, newVal: string): void {
+        data.value[index][dataKeyName[index]] = newVal;
     }
 
-    function open(): void {
+    function open(index: number): void {
         detailState.value = true;
+        detaiIndex.value = index;
     }
 
     function close(): void {
         detailState.value = false;
-    }
-    function setNewIndex(index: number): void {
-        detaiIndex.value = index;
-        detailObj.value = data.value[index];
     }
 
     return {
@@ -55,8 +54,7 @@ export const useControlData = defineStore('useControlData', () => {
         open,
         close,
         detaiIndex,
-        setNewIndex,
         dataKeyName,
-        detailObj,
+        editItem,
     };
 });

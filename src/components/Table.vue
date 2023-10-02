@@ -58,8 +58,7 @@ const getArr = (x: number, y: number) => {
 }
 
 const emitDetail = (index: number) => {
-    controlData.open()
-    controlData.setNewIndex(index)
+    controlData.open(index)
 
 }
 </script>
