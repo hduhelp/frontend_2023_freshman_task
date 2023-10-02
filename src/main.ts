@@ -16,6 +16,4 @@ APP.use(router);
 APP.use(ElementPlus);
 APP.use(pinia);
 
-const whiteList = ['/'];
-
 APP.mount('#app');

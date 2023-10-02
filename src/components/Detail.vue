@@ -18,7 +18,8 @@
                 <div class="content" v-if="item != 'images' && item != 'thumbnail' && !editState">
                     {{ controlData.data[controlData.detaiIndex]![item] }}
                 </div>
-                <img v-else-if="item != 'thumbnail' && !editState" :src="controlData.data[controlData.detaiIndex]?.images[0]"
+                <img v-else-if="item != 'thumbnail' && !editState"
+                    :src="controlData.data[controlData.detaiIndex]?.images[0]"
                     :alt="controlData.data[controlData.detaiIndex]?.title">
             </el-descriptions-item>
         </el-descriptions>
@@ -26,7 +27,7 @@
 </template>
   
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { ElButton, ElDrawer } from 'element-plus'
 import { useControlData } from '@/stores/useControlData';
 
@@ -48,7 +49,7 @@ const saveNewVal = () => {
     for (let i = 0; i < domArr.length; i++)
         controlData.editItem(i, (domArr[i] as HTMLInputElement).value)
     console.log(controlData);
-    
+
     changeEditState()
 }
 </script>

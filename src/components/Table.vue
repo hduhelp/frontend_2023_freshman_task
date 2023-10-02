@@ -31,16 +31,15 @@ const js = await res.json();
 
 <script setup lang='ts'>
 import DeleteBut from './DeleteBut.vue'
-import { ref, reactive, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useControlData } from '@/stores/useControlData';
 
-
-let json = ref(js)
 let currentPage = ref(1)
 
 const controlData = useControlData()
-controlData.setNewVal(json.value.products)
-json.value = js.products
+controlData.setNewVal(js.products)
+
+let json = ref(controlData.data)
 
 controlData.$subscribe((mutation, state) => {
     json.value = controlData.data
