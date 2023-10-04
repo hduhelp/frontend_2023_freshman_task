@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+table {
+  margin-top: 20px;
+  border: 1px black solid;
+  border-collapse: collapse;
+}
+
+th, td{
+  border: 1px black solid
+}
+
+/* th::before {
+  content: "Hi";
+} */
