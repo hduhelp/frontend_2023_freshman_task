@@ -1,6 +1,10 @@
 <template>
-    <el-table class="main" :data="getArr((currentPage - 1) * 5 + 1, currentPage * 5)" border stripe
-        :default-sort="{ prop: 'date', order: 'descending' }">
+    <div class="but">
+        <el-button type="success" @click="addItem">Add</el-button>
+        <el-button type="danger" @click="deleteItem">Delete</el-button>
+    </div>
+    <el-table class="main" :data="currentData" border stripe :default-sort="{ prop: 'date', order: 'descending' }"
+        @selection-change="handleSelectionChange">
 
         <el-table-column type="selection" width="55" />
         <el-table-column fixed prop="id" label="id" sortable />
@@ -35,6 +39,11 @@ import { ref, computed } from 'vue'
 import { useControlData } from '@/stores/useControlData';
 
 let currentPage = ref(1)
+let currentData = ref(computed(() => {
+    return getArr((currentPage.value - 1) * 5 + 1, currentPage.value * 5)
+}))
+
+let nowSelected: any = [];
 
 const controlData = useControlData()
 controlData.setNewVal(js.products)
@@ -60,6 +69,31 @@ const emitDetail = (index: number) => {
     controlData.open(index)
 
 }
+
+const addItem = () => {
+    controlData.pushNewItem()
+    controlData.open(controlData.data.at(-1).id - 1)
+    controlData.checkState(true)
+}
+
+const handleSelectionChange = (val: any) => {
+    nowSelected = []
+    val.forEach((element: any, index: number) => {
+        nowSelected[index] = element.id
+    });
+}
+const deleteItem = () => {
+    console.log(nowSelected);
+
+    nowSelected.forEach((id: number, index: number) => {
+        console.log(id);
+
+        controlData.idDelItem(id)
+        console.log(controlData.data);
+
+    });
+
+}
 </script>
 
 <style scoped lang='less'>
@@ -67,11 +101,17 @@ const emitDetail = (index: number) => {
     display: inline-block;
     width: 90vw;
     margin-top: 75px;
-    left: calc(50vw - 45vw);
+    left: calc(5vw);
 }
 
 .demo-pagination-block {
     margin-top: 10px;
     margin-left: 5vw;
+}
+
+.but {
+    position: absolute;
+    top: 30px;
+    left: calc(5vw);
 }
 </style>

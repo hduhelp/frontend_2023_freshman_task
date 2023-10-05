@@ -11,9 +11,10 @@ import { RouterLink, RouterView } from 'vue-router';
     padding: 0;
     margin: 0;
 }
+
+html,
+body,
 #app {
     height: 100vh;
-    overflow: hidden;
     background-color: rgb(245, 245, 245);
-}
-</style>
+}</style>
