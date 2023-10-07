@@ -1,0 +1,95 @@
+.right
+{
+    float: right;
+}
+
+.center {text-align:center;}
+
+.red {color: #ff7171;}
+.bg-gray {background-color: #fff7ed;}
+.bg-green {background-color: #88ff88;}
+.bg-red {background-color: #ff7171;}
+
+button.bg-green, button.bg-red
+{
+    border-style: solid;
+    border-width: 1px;
+    height: 50px;
+    width: 125px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: white;
+}
+button.bg-green:hover
+{
+    background-color: #aefaae;
+}
+button.bg-green:active
+{
+    background-color: #75b075;
+}
+button.bg-red:hover
+{
+    background-color: #faa4a4;
+}
+button.bg-red:active
+{
+    background-color: #be6262;
+}
+
+table
+{
+    width: 100%;
+    border-collapse:collapse;
+}
+thead>tr
+{
+    background-color: #eaeaea;
+}
+tbody>tr:nth-child(odd)
+{
+    background-color: #fefefe;
+}
+tbody>tr:nth-child(even)
+{
+    background-color: #eaeaea;
+}
+tbody>tr>td:last-child
+{
+    color: #ff7171;
+}
+tbody>tr:hover
+{
+    background-color: turquoise;
+}
+td
+{
+    height: 50px;
+    text-align:center;
+}
+
+#light
+{
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 2;
+}
+.contes
+{
+    background: #ffffff;
+    display: none;
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+}
