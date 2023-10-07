@@ -1,17 +1,72 @@
 html {
+  color-scheme: light;
   box-sizing: border-box;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#top-func{
+  max-width: 90%;
+  min-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 table {
   margin-top: 20px;
+  margin-bottom: 20px;
   border: 1px black solid;
   border-collapse: collapse;
+  max-width: 98%;
+  min-width:90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 th, td{
-  border: 1px black solid
+  text-align: center;
+  border: .1em black solid;
+  padding: .3em
+}
+
+#footer{
+  display: flex;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* #bottom-info{
+  
+} */
+
+#page-button{
+  display: flex;
+  width: 20%;
+  justify-content: space-evenly;
+  margin-right: 40%;
+  margin-left: auto;
+}
+
+input[type="checkbox"i] {
+    background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+}
+
+tr.selected {
+  background-color: rgba(84, 150, 191, 0.452);
 }
 
 /* th::before {
