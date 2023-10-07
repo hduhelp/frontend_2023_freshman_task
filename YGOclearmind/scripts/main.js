@@ -40,6 +40,7 @@ let btnnew=document.querySelector("#new");
 function addTmplFile() {
     /*let page1 = document.getElementById("page1").style;
     page1.display = "none";*/
+    document.getElementById("addname").innerHTML="新增同学信息";
     let page2 = document.getElementById("page2").style;
     page2.display = "block";
     let totalbg = document.getElementById("totalBackground").style;
@@ -138,6 +139,7 @@ btndel.onclick = function(){
     table.deleteRow(table.rows.length-1);
 }
 function modify(obj){
+    document.getElementById("addname").innerHTML="修改信息";
     let totalbg = document.getElementById("totalBackground").style;
     totalbg.display = "block";
     let page2 = document.getElementById("page2").style;
@@ -172,6 +174,7 @@ function submit2(){
     
 }
 function look(obj){
+    document.getElementById("addname").innerHTML="查看信息";
     let totalbg = document.getElementById("totalBackground").style;
     totalbg.display = "block";
     let page2 = document.getElementById("page2").style;
