@@ -9,6 +9,9 @@ function clearData() {
 }
 
 function fetchData() {
+  // const bodyElement = document.querySelector('body');
+  // bodyElement.style.transition = 'opacity qs ease-in-out';
+  // bodyElement.style.opacity = 0;
   console.log("fetch");
   fetch("./data.json")
   .then(response => response.json())
@@ -29,6 +32,7 @@ function fetchData() {
 
     buttonInit(pageNum, length, quantity);
   })
+  // bodyElement.style.opacity = 1;
 }
 
 function buttonInit(pageNum, length, quantity) {
@@ -134,6 +138,12 @@ function updateDisplayDelete(select, delete_value) {
       delete_value.splice(index, 1);
     }
   }
+  const deleteBtn = document.querySelector("#delete");
+  if(delete_value.length > 0) {
+    deleteBtn.disabled = false;
+  } else {
+    deleteBtn.disabled = true;
+  }
   console.log(delete_value);
 }
 
@@ -150,6 +160,10 @@ function selectToggle(select_toggle, delete_value) {
 
 function deleteRows(delete_value) {
   // post delete_value
+  const deleteDialog = document.querySelector("#delete-dialog");
+  const deleteInfo = deleteDialog.querySelector("p");
+  deleteInfo.innerHTML = `你确定要删除序号为${delete_value}的行吗？` 
+  deleteDialog.showModal();
   return;
 }
 
@@ -158,6 +172,7 @@ function resetSelect(delete_value) {
   select_toggle.checked = false;
   selectToggle(select_toggle, delete_value);
 }
+
 document.addEventListener("DOMContentLoaded", () => {
 
   fetchData();
@@ -184,6 +199,16 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchData();
   }
 
+  document.querySelector("#color-mode").onclick = () => {
+    const htmlElement = document.querySelector("html");
+    const colorMode = htmlElement.getAttribute('color-mode');
+    if(colorMode === 'light') {
+      htmlElement.setAttribute('color-mode', 'dark');
+    } else {
+      htmlElement.setAttribute('color-mode', 'light');
+    }
+  }
+
   const delete_value = [];
   document.addEventListener('click', event => {
     var element = event.target;
@@ -197,11 +222,43 @@ document.addEventListener("DOMContentLoaded", () => {
       selectToggle(element, delete_value);
     } else if(element.id === "delete") {
       deleteRows(delete_value);
+      // resetSelect(delete_value);
+    } else if(element.id === "delete-confirm") {
       resetSelect(delete_value);
     } else if(element.id === "add") {
       addNewRow();
     }
   })
+
+  const collegeSelect = document.getElementById('colleges');
+  const majorSelect = document.getElementById('majors');
+
+  const majorsByCollege = {
+      JSJ: ['软件工程', '计算机科学与工程'],
+      ZDH: ['自动化','机器人'],
+      RGZN: ['人工智能','大数据'],
+      WLAQ: ['信息安全','密码科学与技术','网络工程'],
+      JX: ['车辆工程','工业设计','材料工程']
+  };
+
+  // 初始化专业下拉菜单
+  function populateMajors() {
+      const selectedCollege = collegeSelect.value;
+      majorSelect.innerHTML = ''; // 清空专业下拉菜单
+      majorsByCollege[selectedCollege].forEach(function(major) {
+          const option = document.createElement('option');
+          option.value = major;
+          option.textContent = major;
+          majorSelect.appendChild(option); // 添加专业选项到下拉菜单
+      });
+  }
+
+  // 监听学院选择事件
+  collegeSelect.addEventListener('change', populateMajors);
+
+// 初始化
+  populateMajors();
+
   // not working...?
   // document.querySelectorAll('#add').forEach(function(button) {
   //   button.onclick = () => {
