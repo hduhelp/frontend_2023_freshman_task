@@ -2,10 +2,22 @@
 #total {
     width: 1200px;
     margin: 0 auto;
-    background-color: #f0ece9;
-    border-top: 8px #f0ece9 solid;
+    background-color: #6471af;
+    border-top: 8px #6471af solid;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+body {
+    /*background-image: url('your-background-image.jpg');*/
+    background-color: #6471af;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    /* 去除默认的页面边距 */
+    padding: 0;
+    /* 去除默认的页面内边距 */
 }
 
 /*第一行（学生管理系统那一行）*/
@@ -19,8 +31,10 @@
 .headerLine {
     width: 400px;
     display: inline;
+    text-align: center;
     color: #c3a080;
     font-size: 25px;
+    padding: 2px;
 }
 
 
@@ -28,9 +42,12 @@
 #header {
     width: 400px;
     display: inline;
-    color: #9ea09e;
-    font-size: 20px;
-    padding: 10px 80px;
+    color: #001127f6;
+    font-size: 40px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 100px 11px;
 }
 
 /*第二行（按钮那一行）*/
@@ -124,6 +141,7 @@
     display: inline;
 }
 
+/*点开后的页面*/
 #totalBackground {
     width: 100%;
     height: 100%;
@@ -132,9 +150,17 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #c4c2c1;
+    background-color: #555;
     z-index: 1;
     /*-moz-opacity: 0.8;*/
     opacity: .8;
     /*filter: alpha(opacity=88);*/
+}
+
+td {
+    border-radius: 63px;
+}
+
+th {
+    border-radius: 63px;
 }

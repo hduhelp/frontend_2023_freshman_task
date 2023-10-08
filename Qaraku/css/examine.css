@@ -1,6 +1,5 @@
 /*查看框架*/
-#examineBlock
-{
+#examineBlock {
     width: 420px;
     height: 400px;
     display: none;
@@ -9,51 +8,50 @@
     left: 35%;
     background-color: white;
     border-radius: 5px;
-    z-index:2;
+    z-index: 2;
     /*overflow: auto;*/
 }
 
 /*新增框架头*/
-#examineHeader
-{
+#examineHeader {
     background-color: black;
     color: white;
-    font-family: 黑体;
+    font-family: "微软雅黑";
     font-weight: bold;
     height: 30px;
     padding-left: 10px;
     padding-top: 10px;
 }
+
 /*新增框架主体*/
-#examineMain
-{
+#examineMain {
     height: 290px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #dadee1;
 }
-#examineMain table
-{
+
+#examineMain table {
     width: 400px;
 }
-#examineMain tr
-{
+
+#examineMain tr {
     height: 40px;
 }
-.examineTableTd1
-{
+
+.examineTableTd1 {
     padding-left: 15px;
     width: 120px;
     text-align: right;
 }
-.examineTableTd2
-{
+
+.examineTableTd2 {
     padding-left: 20px;
     width: 250px;
     text-align: left;
 }
-.examineTableTd2 input
-{
+
+.examineTableTd2 input {
     color: #545454;
     width: 150px;
     background-color: #ebebe4;

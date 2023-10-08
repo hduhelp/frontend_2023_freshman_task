@@ -1,67 +1,111 @@
-#add     /*新增*/
-{
+#add
+
+/*新增*/
+    {
+    border-radius: 63px;
+    background: #fdbaba;
+    box-shadow: 28px 28px 57px #8b6666,
+        -28px -28px 57px #ffffff;
     height: 30px;
     width: 75px;
-    background-color: #5cb85c;
+    background-color: #fdbaba;
     color: white;
-    border: 1px solid black;
+    font-size: small;
+    border: 0;
 }
-#del     /*删除*/
-{
+
+#del
+
+/*删除*/
+    {
+    border-radius: 63px;
+    background: #fdbaba;
+    box-shadow: 28px 28px 57px #8b6666,
+        -28px -28px 57px #ffffff;
     height: 30px;
     width: 75px;
-    background-color: #d9534f;
+    background-color: #b05f5f;
     color: white;
-    border: 1px solid black;
-    margin-left: 5px;
+    font-size: small;
+    border: 0;
 }
-#previous     /*上一页*/
-{
+
+#previous
+
+/*上一页*/
+    {
+    border-radius: 63px;
+    background: #fdbaba;
+    box-shadow: 28px 28px 57px #8b6666,
+        -28px -28px 57px #ffffff;
     height: 30px;
     width: 75px;
-    background-color: #5cb85c;
+    background-color: #fdbaba;
     color: white;
-    border: 1px solid black;
+    font-size: small;
+    border: 0;
     float: right;
 }
-#next     /*下一页*/
-{
+
+#next
+
+/*下一页*/
+    {
+    border-radius: 63px;
+    background: #fdbaba;
+    box-shadow: 28px 28px 57px #8b6666,
+        -28px -28px 57px #ffffff;
     height: 30px;
     width: 75px;
-    background-color: #d9534f;
+    background-color: #b05f5f;
     color: white;
-    border: 1px solid black;
+    font-size: small;
+    border: 0;
     margin-left: 5px;
     float: right;
 }
-#examine     /*查看*/
-{
+
+#examine
+
+/*查看*/
+    {
     font-size: 16px;
     height: 20px;
     border: none;
-    color: red;
+    color: #3c4faf;
     background: none;
+    border-radius: 95px;
+
     /*background-color: #eef1f8;*/
 }
-#update     /*修改*/
-{
+
+#update
+
+/*修改*/
+    {
     font-size: 16px;
     height: 20px;
     border: none;
-    color: red;
+    color: #3c4faf;
     background: none;
     /*background-color: #eef1f8;*/
 }
-#submit     /*提交*/
-{
+
+#submit
+
+/*提交*/
+    {
     height: 30px;
     width: 75px;
     background-color: #5cb85c;
     color: black;
     border: 1px solid #dadee1;
 }
-#addCancel     /*新增中的取消*/
-{
+
+#addCancel
+
+/*新增中的取消*/
+    {
     height: 30px;
     width: 75px;
     background-color: white;
@@ -69,16 +113,22 @@
     border: 1px solid #dadee1;
     margin-left: 5px;
 }
-#preservation     /*保存*/
-{
+
+#preservation
+
+/*保存*/
+    {
     height: 30px;
     width: 75px;
     background-color: #5cb85c;
     color: black;
     border: 1px solid #dadee1;
 }
-#updateCancel     /*修改中的取消*/
-{
+
+#updateCancel
+
+/*修改中的取消*/
+    {
     height: 30px;
     width: 75px;
     background-color: white;
@@ -86,8 +136,11 @@
     border: 1px solid #dadee1;
     margin-left: 5px;
 }
-#examineCancel     /*修改中的取消*/
-{
+
+#examineCancel
+
+/*修改中的取消*/
+    {
     height: 30px;
     width: 75px;
     background-color: white;
@@ -95,16 +148,22 @@
     border: 1px solid #dadee1;
     /*margin-left: 5px;*/
 }
-#confirm     /*确认*/
-{
+
+#confirm
+
+/*确认*/
+    {
     height: 30px;
     width: 75px;
     background-color: #5cb85c;
     color: black;
     border: 1px solid #dadee1;
 }
-#delCancel     /*删除中的取消*/
-{
+
+#delCancel
+
+/*删除中的取消*/
+    {
     height: 30px;
     width: 75px;
     background-color: white;
