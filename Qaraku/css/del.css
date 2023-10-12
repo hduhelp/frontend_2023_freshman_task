@@ -1,6 +1,5 @@
 /*删除框架*/
-#delBlock
-{
+#delBlock {
     width: 420px;
     height: 400px;
     display: none;
@@ -9,13 +8,13 @@
     left: 35%;
     background-color: white;
     border-radius: 5px;
-    z-index:2;
+    z-index: 2;
     /*overflow: auto;*/
 }
+
 /*新增框架头*/
-#delHeader
-{
-    background-color: black;
+#delHeader {
+    background-color: rgb(0, 39, 138);
     color: white;
     font-family: 黑体;
     font-weight: bold;
@@ -23,20 +22,20 @@
     padding-left: 10px;
     padding-top: 10px;
 }
+
 /*新增框架主体*/
-#delMain
-{
+#delMain {
     height: 280px;
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #dadee1;
 }
-#delMain p
-{
+
+#delMain p {
     font-size: 20px;
 }
-#delMessage
-{
+
+#delMessage {
     font-size: 20px;
 }

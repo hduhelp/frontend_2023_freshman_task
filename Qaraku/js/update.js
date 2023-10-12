@@ -1,6 +1,8 @@
-// 修改按钮
+//update.js文件实现修改界面的修改和保存button
+
+// 修改按钮；通过style.display来实现
 function update(obj) {
-    // 打开修改框架
+    // 打开修改框架：通过style.display来实现
     document.getElementById('updateBlock').style.display = 'block';
     document.getElementById('totalBackground').style.display = 'block';
 
@@ -10,7 +12,7 @@ function update(obj) {
     // 获取当前行中的所有单元格
     iTds = iTr.getElementsByTagName('td');
 
-    // 将新增框架中的输入框中内容设为当前行对应的内容
+    // 将新增框架中的输入框中内容设为当前行对应的内容//即为重新读取
     document.getElementById('stuId2').value = iTds[2].innerText;
     document.getElementById('name2').value = iTds[3].innerText;
     document.getElementById('colg2').value = iTds[4].innerText;
