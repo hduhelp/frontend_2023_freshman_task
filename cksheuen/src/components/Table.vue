@@ -72,7 +72,10 @@ const emitDetail = (index: number) => {
 
 const addItem = () => {
     controlData.pushNewItem()
-    controlData.open(controlData.data.at(-1).id - 1)
+    console.log('id', controlData.data.at(-1).id - 1);
+    console.log('open', controlData.data.length);
+
+    controlData.open(controlData.data.length)
     controlData.checkState(true)
 }
 

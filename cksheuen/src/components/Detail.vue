@@ -11,28 +11,26 @@
                     <div class="cell-item">
                         {{ item }}
                     </div>
-                </template>
-                <el-input id="newVal" v-model="controlData.data[controlData.detaiIndex]![item]"
+                </template><!-- v-model="controlData.data[controlData.detaiIndex]![item]" -->
+                <el-input id="newVal" :v-model="getVal(controlData.detaiIndex, item)"
                     v-if="controlData.editState && item != 'images' && item != 'thumbnail'" />
 
                 <div class="content" v-if="item != 'images' && item != 'thumbnail' && !controlData.editState">
-                    {{ controlData.data[controlData.detaiIndex]![item] }}
+                    {{ getVal(controlData.detaiIndex, item) }}
                 </div>
                 <img v-else-if="item != 'thumbnail' && !controlData.editState"
-                    :src="controlData.data[controlData.detaiIndex]?.images[0]"
-                    :alt="controlData.data[controlData.detaiIndex]?.title">
+                    :src="(getVal(controlData.detaiIndex, item) as string[])[0]"
+                    :alt="(getVal(controlData.detaiIndex, 'title') as string)">
             </el-descriptions-item>
         </el-descriptions>
     </el-drawer>
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue'
 import { ElButton, ElDrawer } from 'element-plus'
 import { useControlData } from '@/stores/useControlData';
 
 const controlData = useControlData()
-
 const handleClose = () => {
     controlData.close()
     controlData.checkState(false)
@@ -48,6 +46,11 @@ const saveNewVal = () => {
         controlData.editItem(i, (domArr[i] as HTMLInputElement).value)
 
     changeEditState()
+}
+
+const getVal = (index: number, item: string): number | string | string[] => {
+
+    return controlData.data && controlData.data[index] ? controlData.data[index]![item] : '---'
 }
 </script>
   

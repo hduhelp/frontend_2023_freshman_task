@@ -20,16 +20,16 @@ export const useControlData = defineStore('useControlData', () => {
     let data = ref<Data[]>([]);
     let newItem: Data = {
         id: 0,
-        title: '',
-        description: '',
+        title: '--',
+        description: '--',
         price: 0,
         discountPercentage: 0,
         rating: 0,
         stock: 0,
-        brand: '',
-        category: '',
-        thumbnail: '',
-        images: [''],
+        brand: '--',
+        category: '--',
+        thumbnail: '--',
+        images: ['--'],
     };
     let dataKeyName: any[] = [];
 
@@ -65,6 +65,7 @@ export const useControlData = defineStore('useControlData', () => {
     function open(index: number): void {
         detailState.value = true;
         detaiIndex.value = index;
+        console.log('open', index, data.value);
     }
 
     function close(): void {
