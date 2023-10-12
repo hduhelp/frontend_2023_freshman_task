@@ -73,10 +73,13 @@ const createColumns = (onDeleteRowClick, onModifyRowClick) => [
 
 const checkedRowKeysRef = ref([]);
 const spinShow = ref(true);
-const { data, editModelData, showModal, initModel } = inject("datas");
+const { data, editModelData, showModal, initModel: initModal } = inject("datas");
 console.log("initModel!!!")
-console.log(initModel)
+console.log(initModal)
 
+/**
+ * Delete selected values for both remote and local. Then update index.
+ */
 function onDeleteClick() {
     checkedRowKeysRef.value.forEach(key => {
         fetch(`https://dummyjson.com/users/${data.value[key].id}`, {
@@ -90,8 +93,11 @@ function onDeleteClick() {
     data.value.forEach((ele, index) => ele.key = index);
 }
 
+/**
+ * show a modal
+ */
 function onAddRowClick() {
-    initModel("add");
+    initModal("add");
     showModal.value = true;
     editModelData.value = {
         key: 0,
@@ -119,7 +125,7 @@ function onDeleteRowClick(row) {
     data.value.forEach((ele, index) => ele.key = index);
 }
 function onModifyRowClick(row) {
-    initModel("edit");
+    initModal("edit");
     showModal.value = true;
     editModelData.value = { ...row };
 }

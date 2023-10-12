@@ -13,13 +13,13 @@ const errorMessage = ref("");
  * init the model
  * @param {String} mode - "edit" or "add"
  */
-function initModel(mode) {
+function initModal(mode) {
   errorMessage.value = "";
   if (mode === "edit" || mode === "add") {
     modalMode.value = mode;
   }
 }
-provide("datas", { data, editModelData, showModal, modalMode, errorMessage, initModel });
+provide("datas", { data, editModelData, showModal, modalMode, errorMessage, initModel: initModal });
 </script>
 
 <template>
