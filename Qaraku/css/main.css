@@ -2,15 +2,15 @@
 #total {
     width: 1200px;
     margin: 0 auto;
-    background-color: #6471af;
-    border-top: 8px #6471af solid;
+    background-color: #3b5f78;
+    border-top: 8px #3b5f78 solid;
     padding-left: 20px;
     padding-right: 20px;
 }
 
 body {
     /*background-image: url('your-background-image.jpg');*/
-    background-color: #6471af;
+    background-color: #3b5f78;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

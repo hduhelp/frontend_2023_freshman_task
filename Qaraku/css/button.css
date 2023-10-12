@@ -3,12 +3,12 @@
 /*新增*/
     {
     border-radius: 63px;
-    background: #fdbaba;
+    background: #ca7e4a;
     box-shadow: 28px 28px 57px #8b6666,
         -28px -28px 57px #ffffff;
     height: 30px;
     width: 75px;
-    background-color: #fdbaba;
+    background-color: #ca7e4a;
     color: white;
     font-size: small;
     border: 0;
@@ -19,7 +19,7 @@
 /*删除*/
     {
     border-radius: 63px;
-    background: #fdbaba;
+    background: #ca7e4a;
     box-shadow: 28px 28px 57px #8b6666,
         -28px -28px 57px #ffffff;
     height: 30px;
@@ -35,12 +35,12 @@
 /*上一页*/
     {
     border-radius: 63px;
-    background: #fdbaba;
+    background: #ca7e4a;
     box-shadow: 28px 28px 57px #8b6666,
         -28px -28px 57px #ffffff;
     height: 30px;
     width: 75px;
-    background-color: #fdbaba;
+    background-color: #ca7e4a;
     color: white;
     font-size: small;
     border: 0;
@@ -52,7 +52,7 @@
 /*下一页*/
     {
     border-radius: 63px;
-    background: #fdbaba;
+    background: #ca7e4a;
     box-shadow: 28px 28px 57px #8b6666,
         -28px -28px 57px #ffffff;
     height: 30px;
