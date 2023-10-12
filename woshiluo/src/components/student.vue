@@ -30,7 +30,7 @@ const props = defineProps({
 .table-cell {
 	text-align: center;
 	vertical-align: middle;
-	padding: 5px;
-	border-radius: 5px;
+	height: 1em;
+	padding: .5em;
 }
 </style>

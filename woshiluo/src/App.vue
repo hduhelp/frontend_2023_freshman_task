@@ -4,11 +4,36 @@ import { ref } from 'vue';
 import StuentList from './components/student-list.vue';
 
 const students = ref([
-	{ student_id: 1, name: "123", college: "A", major: "B",  year: 2021, class_id: 1, old: 1 },
-	{ student_id: 1, name: "123", college: "A", major: "B",  year: 2021, class_id: 1, old: 1 },
-	{ student_id: 1, name: "123", college: "A", major: "B",  year: 2021, class_id: 1, old: 1 },
-	{ student_id: 1, name: "123", college: "A", major: "B",  year: 2021, class_id: 1, old: 1 },
-	{ student_id: 1, name: "123", college: "A", major: "B",  year: 2021, class_id: 1, old: 1 }
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
+	{ student_id: 1, name: '123', college: 'A', major: 'B', year: 2021, class_id: 1, old: 1 },
 ]);
 </script>
 
@@ -22,13 +47,14 @@ const students = ref([
 <style scoped>
 .title {
 	text-align: center;
+	margin-top: 8vh;
+	margin-bottom: 4vh;
 }
 
 .main-table {
 	margin-left: auto;
 	margin-right: auto;
-	border-radius: .1em;
+	border-radius: 0.1em;
 	width: 96vw;
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 }
 </style>
