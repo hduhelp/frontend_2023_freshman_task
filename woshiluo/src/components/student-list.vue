@@ -30,6 +30,9 @@ const toggle_student = (idx) => {
 const delete_student = () => {
 	emit('delete');
 };
+const save_student = () => {
+	localStorage.setItem('students', JSON.stringify(props.data));
+};
 
 const dialogs = ref([]);
 
@@ -120,7 +123,14 @@ const update_student = (
 		</table>
 	</div>
 	<div class="student-control">
-		共 {{ Math.ceil((1.0 * props.data.length) / PAGE_MAX) }} 页（每页 {{ PAGE_MAX }} 条，共 {{ data.length }} 条）
+		共 {{ Math.ceil((1.0 * props.data.length) / PAGE_MAX) }} 页（每页
+		{{ PAGE_MAX }} 条，共 {{ data.length }} 条）
+		<button
+			class="control control-button control-save"
+			@click="save_student"
+		>
+			保存
+		</button>
 		<button
 			class="control control-button control-delete"
 			@click="delete_student"
@@ -252,10 +262,11 @@ const update_student = (
 .student-control {
 	display: flex;
 	justify-content: right;
+	align-items: baseline;
 	padding-top: 1em;
 }
 
-.control-add {
+.student-control > * {
 	margin-left: 1em;
 }
 
@@ -273,5 +284,13 @@ const update_student = (
 
 .control-add:hover {
 	background: #1b5e20;
+}
+
+.control-save {
+	background: #448aff;
+}
+
+.control-add:hover {
+	background: #2962ff;
 }
 </style>
