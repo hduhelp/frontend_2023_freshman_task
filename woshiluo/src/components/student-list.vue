@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import Student from './student.vue';
 
 const props = defineProps({ data: Array });
+const emit = defineEmits(['edit', 'delete'])
 const pages = ref(1);
 const PAGE_MAX = 20;
 
@@ -16,6 +17,10 @@ const page_add = (offset) => {
 };
 const check_display = (idx) => {
 	return ( pages.value - 1 ) * PAGE_MAX <= idx && idx < pages.value * PAGE_MAX;
+};
+
+const delete_student = (idx) => {
+	emit("delete", idx);
 };
 </script>
 
@@ -40,6 +45,7 @@ const check_display = (idx) => {
 					<Student 
 						:id="idx"
 						:key="idx"
+						@delete="delete_student"
 						v-if="check_display(idx)"
 						v-bind="student"
 					></Student>
@@ -48,18 +54,22 @@ const check_display = (idx) => {
 		</table>
 	</div>
 	<div class="table-control">
-		<button class="control control-button control-left" @click="page_add(-1)">&lt;</button>
+		<button class="control control-button control-left" :class="{ 'control-disable': !page_vaild(-1) }" @click="page_add(-1)">&lt;</button>
 		<span class="control control-text">{{ pages }}</span>
-		<button class="control control-button control-right" @click="page_add(1)">&gt;</button>
+		<button class="control control-button control-right" :class="{ 'control-disable': !page_vaild(1) }" @click="page_add(1)">&gt;</button>
 	</div>
 </template>
 
 <style scoped>
 .main {
 	height: 60em; 
+	overflow: scroll;
 }
+
 .table {
-	width: 100%;
+	width: calc( 100% - 1em );
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0;
 	border-spacing: 0;
 	border-radius: 0.1em;
@@ -106,16 +116,34 @@ const check_display = (idx) => {
 	justify-content: space-between;
 }
 
+.control-disable {
+	opacity: 0;
+}
+
 .table-control {
+	padding-top: 1em;
 }
 
 .control {
-	font-size: 1.5em;
+	background: #90CAF9;
+	padding: .2em;
+	padding-left: .4em;
+	padding-right: .4em;
+	border-radius: .1em;
+	font-size: 1.2em;
+	color: #fff;
+	transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.control:hover {
+	background: #2196F3;
+}
+
+.control-text {
+	background: #2196F3;
 }
 
 .control-button {
-	border-radius: 1em;
 	border: none;
-	background: none;
 }
 </style>
