@@ -35,6 +35,7 @@ const dialogs = ref([]);
 
 const push_dialog = (idx, title, editable) => {
 	dialogs.value.push({
+		id: idx,
 		title: title + props.data[idx].name,
 		editable: editable,
 		student: toRaw(props.data[idx])
@@ -50,9 +51,40 @@ const push_view = (idx) => {
 };
 
 const destory_dialog = (idx) => {
-	dialogs.value.splice( idx, 1 );
-}
+	dialogs.value.splice(idx, 1);
+};
 
+const add_student = () => {
+	dialogs.value.push({
+		id: -1,
+		title: '添加用户',
+		editable: true,
+		student: {}
+	});
+};
+
+const update_student = (
+	id,
+	student_id,
+	name,
+	college,
+	major,
+	year,
+	class_id,
+	old
+) => {
+	const student = {
+		student_id: student_id,
+		name: name,
+		college: college,
+		major: major,
+		year: year,
+		class_id: class_id,
+		old: old
+	};
+	if (id >= 0) props.data[id] = student;
+	else props.data.push(student);
+};
 </script>
 
 <template>
@@ -94,6 +126,9 @@ const destory_dialog = (idx) => {
 		>
 			删除
 		</button>
+		<button class="control control-button control-add" @click="add_student">
+			添加
+		</button>
 	</div>
 	<div class="table-control">
 		<button
@@ -118,6 +153,7 @@ const destory_dialog = (idx) => {
 			<component
 				:is="StudentDialog"
 				v-bind="dialog"
+				@submit="update_student"
 				@destory="destory_dialog(idx)"
 			></component>
 		</template>
@@ -176,7 +212,7 @@ const destory_dialog = (idx) => {
 }
 
 .table-checkbox {
-	max-width: 2em;
+	max-width: 1em;
 }
 
 .table-control {
@@ -224,5 +260,13 @@ const destory_dialog = (idx) => {
 
 .control-delete:hover {
 	background: #b71c1c;
+}
+
+.control-add {
+	background: #4caf50;
+}
+
+.control-add:hover {
+	background: #1b5e20;
 }
 </style>

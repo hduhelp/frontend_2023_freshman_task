@@ -20,13 +20,9 @@ const toggle_student = () => {
 };
 </script>
 <template>
-	<tr class="table-row">
-		<td class="table-cell">
-			<input
-				type="checkbox"
-				:checked="checked"
-				@change="toggle_student"
-			/>
+	<tr class="table-row" @click="toggle_student">
+		<td class="table-cell table-checkbox">
+			<input type="checkbox" :checked="checked" />
 		</td>
 		<td class="table-cell">{{ id + 1 }}</td>
 		<td class="table-cell">{{ student_id }}</td>
@@ -37,8 +33,12 @@ const toggle_student = () => {
 		<td class="table-cell">{{ class_id }}</td>
 		<td class="table-cell">{{ old }}</td>
 		<td class="table-cell">
-			<span @click="emit('view')" class="button view-button">查看</span>
-			<span @click="emit('edit')" class="button edit-button">编辑</span>
+			<span @click.stop="emit('view')" class="button view-button"
+				>查看</span
+			>
+			<span @click.stop="emit('edit')" class="button edit-button"
+				>编辑</span
+			>
 		</td>
 	</tr>
 </template>
@@ -64,5 +64,9 @@ const toggle_student = () => {
 	height: 1em;
 	padding: 0.5em;
 	transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+
+.table-checkbox {
+	max-width: 1em;
 }
 </style>

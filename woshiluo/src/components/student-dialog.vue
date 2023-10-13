@@ -1,5 +1,8 @@
 <script setup>
+import { ref } from 'vue';
+
 const props = defineProps({
+	id: Number,
 	title: String,
 	editable: Boolean,
 	student: Object
@@ -10,12 +13,20 @@ const destory_self_when_body = (e) => {
 	if (e.srcElement.className === 'dialog-body') emit('destory');
 };
 
+const student_id = ref(props.student.student_id);
+const name = ref(props.student.name);
+const college = ref(props.student.college);
+const major = ref(props.student.major);
+const year = ref(props.student.year);
+const class_id = ref(props.student.class_id);
+const old = ref(props.student.old);
+
 const destory_self = () => {
 	emit('destory');
 };
 
 const submit_self = () => {
-	emit('submit');
+	emit('submit', props.id, student_id, name, college, major, year, class_id, old);
 	emit('destory');
 };
 </script>
@@ -23,14 +34,14 @@ const submit_self = () => {
 <template>
 	<div class="dialog">
 		<div class="dialog-overlay"></div>
-		<div class="dialog-body" @click="destory_self_when_body">
+		<div class="dialog-body" @click.stop="destory_self_when_body">
 			<div class="dialog-card">
 				<h2 class="card-title">{{ title }}</h2>
 				<div class="input-box">
 					<label>学号</label>
 					<input
 						:disabled="!editable"
-						:value="student.student_id"
+						v-model="student_id"
 						class="input input-student-id"
 					/>
 				</div>
@@ -38,7 +49,7 @@ const submit_self = () => {
 					<label>姓名</label>
 					<input
 						:disabled="!editable"
-						:value="student.name"
+						v-model="name"
 						class="input input-name"
 					/>
 				</div>
@@ -46,7 +57,7 @@ const submit_self = () => {
 					<label>学院</label>
 					<input
 						:disabled="!editable"
-						:value="student.college"
+						v-model="college"
 						class="input input-college"
 					/>
 				</div>
@@ -54,7 +65,7 @@ const submit_self = () => {
 					<label>专业</label>
 					<input
 						:disabled="!editable"
-						:value="student.major"
+						v-model="major"
 						class="input input-major"
 					/>
 				</div>
@@ -62,7 +73,7 @@ const submit_self = () => {
 					<label>年级</label>
 					<input
 						:disabled="!editable"
-						:value="student.year"
+						v-model="year"
 						class="input input-year"
 					/>
 				</div>
@@ -70,7 +81,7 @@ const submit_self = () => {
 					<label>班级</label>
 					<input
 						:disabled="!editable"
-						:value="student.class_id"
+						v-model="class_id"
 						class="input input-class-id"
 					/>
 				</div>
@@ -78,13 +89,21 @@ const submit_self = () => {
 					<label>年龄</label>
 					<input
 						:disabled="!editable"
-						:value="student.old"
+						v-model="old"
 						class="input input-old"
 					/>
 				</div>
 				<div class="button-panel">
-					<button @click="destory_self" class="button button-cancel">取消</button>
-					<button @class="submit_self" v-if="editable" class="button button-save">保存</button>
+					<button @click="destory_self" class="button button-cancel">
+						取消
+					</button>
+					<button
+						v-if="editable"
+						@click="submit_self"
+						class="button button-cancel"
+					>
+						保存
+					</button>
 				</div>
 			</div>
 		</div>
@@ -172,7 +191,7 @@ const submit_self = () => {
 }
 
 .button-panel {
-	padding: .2em;
+	padding: 0.2em;
 	padding-top: 1em;
 	text-align: right;
 }
@@ -182,11 +201,11 @@ const submit_self = () => {
 	cursor: pointer;
 	background: #fff;
 	border: 0;
-	padding: .5em;
+	padding: 0.5em;
 	transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .button:hover {
-	background: #E0E0E0;
+	background: #e0e0e0;
 }
 </style>
