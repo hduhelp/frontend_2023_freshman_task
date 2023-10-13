@@ -130,7 +130,7 @@ dialog {
   background-color: var(--surface1);
   color: var(--element1);
   
-  transition: 0.3s;
+  animation: zoomIn 0.2s ease-in-out;
 }
 
 dialog input, dialog select{
@@ -153,6 +153,17 @@ dialog button {
   padding-right: .5em;
 }
 
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+/* div.hidden {
+  visibility: hidden;
+} */
 /* .skeleton {
   background-color: var(--element3);
 } */

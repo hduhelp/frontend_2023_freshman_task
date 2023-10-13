@@ -124,8 +124,25 @@ function changeRow(change_button) {
   const gradeInput = dialog.querySelector("input#grade");
   const classInput = dialog.querySelector("input#class");
   const ageInput = dialog.querySelector("input#age");
-  
-  
+
+  numberInput.setAttribute('placeholder', rowChildren[2].innerHTML);
+  nameInput.setAttribute('placeholder', rowChildren[3].innerHTML);
+  gradeInput.setAttribute('placeholder', rowChildren[6].innerHTML);
+  classInput.setAttribute('placeholder', rowChildren[7].innerHTML);
+  ageInput.setAttribute('placeholder', rowChildren[8].innerHTML);
+
+
+
+  const majorSelect = dialog.querySelector("select#majors");
+  const majorOptions = majorSelect.children;
+  Array.from(majorOptions).forEach(option => {
+    if(option.innerHTML === rowChildren[5].innerHTML) {
+      option.setAttribute("selected", "selected");
+    } else {
+      option.removeAttribute("selected");
+    }
+  })
+
   dialog.showModal();
 }
 
@@ -238,9 +255,20 @@ document.addEventListener("DOMContentLoaded", () => {
       checkRow(element);
     } else if(element.className === 'change') {
       const changeDialog = document.querySelector("#change-dialog");
+      const row = element.parentNode.parentNode;
+      const rowChildren = row.children;
       const collegeSelect = changeDialog.querySelector("#colleges");
-      changeRow(element);
+      const collegeOptions = collegeSelect.children;
+      Array.from(collegeOptions).forEach(option => {
+        if(option.innerHTML === rowChildren[4].innerHTML) {
+          option.setAttribute("selected", "selected");
+        } else {
+          option.removeAttribute("selected");
+        }
+      })
       populateMajors(collegeSelect);
+      changeRow(element);
+      // populateMajors(collegeSelect);
     } else if(element.className === 'select') {
       updateDisplayDelete(element, delete_value);
     } else if(element.id === 'select-toggle') {

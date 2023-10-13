@@ -1,6 +1,6 @@
 {
   "students":[{"id": 1, "number": 22050701, "name": "一二", "college": "计算机科学与工程学院", "major": "软件工程", "grade": 2015, "class": 2, "age": 21},
-              {"id": 2, "number": 22050702, "name": "三四", "college": "计算机科学与工程学院", "major": "计算机科学与工程", "grade": 2015, "class": 2, "age": 20},
+              {"id": 2, "number": 22050702, "name": "三四", "college": "人工智能学院", "major": "人工智能", "grade": 2015, "class": 2, "age": 20},
               {"id": 3, "number": 22050703, "name": "五六", "college": "计算机科学与工程学院", "major": "计算机科学与工程", "grade": 2015, "class": 2, "age": 20},
               {"id": 4, "number": 22050704, "name": "七八", "college": "计算机科学与工程学院", "major": "计算机科学与工程", "grade": 2015, "class": 2, "age": 20},
               {"id": 5, "number": 22050705, "name": "旧事", "college": "计算机科学与工程学院", "major": "计算机科学与工程", "grade": 2015, "class": 2, "age": 20},
