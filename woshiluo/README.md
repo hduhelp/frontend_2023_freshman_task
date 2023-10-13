@@ -1,7 +1,15 @@
-# Vue 3 + Vite
+# Hduhelp frontend freshman task
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+本项目实现了以下功能：
 
-## Recommended IDE Setup
+- 大致还原要求的布局，自己有所修改。
+- 支持弹窗查看、修改、添加信息。
+- 通过 LocalStorage 持久化保存用户信息。
+- 有一定动画过渡。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 可以改进的部分
+
+- 命名规范尚未统一。
+- 部分动画尚未实现。
+- 尚不支持导出和导入/基于请求的数据交互。
+- 不支持路由和调整每页显示信息条数。
