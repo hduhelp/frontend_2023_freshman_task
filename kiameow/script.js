@@ -1,8 +1,9 @@
 if(!localStorage.getItem('start')){
   localStorage.setItem('start', 0);
 }
-
-localStorage.setItem('quantity', 10);
+if(!localStorage.getItem('colorMode')){
+  localStorage.setItem('colorMode', 'light');
+}
 
 function clearData() {
   document.querySelector("tbody").innerHTML = "";
@@ -104,12 +105,27 @@ function checkRow(check_button) {
   checkDialogList.innerHTML = "";
   const label = document.querySelector("#head-row");
   const labelChildren = label.children;
-  for(let i=1; i<rowChildren.length-1; i++) {
+  for(let i=2; i<rowChildren.length-1; i++) {
     // console.log(children[i].innerHTML);
     let liElement = document.createElement('li');
     liElement.innerHTML = `${labelChildren[i].innerHTML}: ${rowChildren[i].innerHTML}`;
     checkDialogList.appendChild(liElement);
   }
+  dialog.showModal();
+}
+
+function changeRow(change_button) {
+  const dialog = document.querySelector("#change-dialog");
+  const row = change_button.parentNode.parentNode;
+  const rowChildren = row.children;
+  
+  const numberInput = dialog.querySelector("input#number");
+  const nameInput = dialog.querySelector("input#name");
+  const gradeInput = dialog.querySelector("input#grade");
+  const classInput = dialog.querySelector("input#class");
+  const ageInput = dialog.querySelector("input#age");
+  
+  
   dialog.showModal();
 }
 
@@ -155,7 +171,7 @@ function selectToggle(select_toggle, delete_value) {
     }
     select.checked = select_toggle.checked;
     updateDisplayDelete(select, delete_value);
-  })
+  });
 }
 
 function deleteRows(delete_value) {
@@ -177,6 +193,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fetchData();
   
+  const htmlElement = document.querySelector("html");
+  // const colorMode = htmlElement.getAttribute("color-mode");
+  const prevColorMode = localStorage.getItem('colorMode');
+  htmlElement.setAttribute('color-mode', prevColorMode);
+
   document.querySelector("#prev").onclick = () => {
     var start = parseInt(localStorage.getItem('start'));
     var quantity = parseInt(localStorage.getItem('quantity'));
@@ -200,12 +221,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.querySelector("#color-mode").onclick = () => {
-    const htmlElement = document.querySelector("html");
     const colorMode = htmlElement.getAttribute('color-mode');
     if(colorMode === 'light') {
       htmlElement.setAttribute('color-mode', 'dark');
+      localStorage.setItem('colorMode', 'dark');
     } else {
       htmlElement.setAttribute('color-mode', 'light');
+      localStorage.setItem('colorMode', 'light');
     }
   }
 
@@ -215,7 +237,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if(element.className === 'check') {
       checkRow(element);
     } else if(element.className === 'change') {
-      alert("change");
+      const changeDialog = document.querySelector("#change-dialog");
+      const collegeSelect = changeDialog.querySelector("#colleges");
+      changeRow(element);
+      populateMajors(collegeSelect);
     } else if(element.className === 'select') {
       updateDisplayDelete(element, delete_value);
     } else if(element.id === 'select-toggle') {
@@ -226,12 +251,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if(element.id === "delete-confirm") {
       resetSelect(delete_value);
     } else if(element.id === "add") {
+      const addDialog = document.querySelector("#add-dialog");
+      const collegeSelect = addDialog.querySelector("#colleges");
       addNewRow();
-    }
+      populateMajors(collegeSelect);
+    } 
   })
 
-  const collegeSelect = document.getElementById('colleges');
-  const majorSelect = document.getElementById('majors');
+  const collegeSelects = document.getElementsByClassName('colleges');
 
   const majorsByCollege = {
       JSJ: ['软件工程', '计算机科学与工程'],
@@ -241,23 +268,24 @@ document.addEventListener("DOMContentLoaded", () => {
       JX: ['车辆工程','工业设计','材料工程']
   };
 
-  // 初始化专业下拉菜单
-  function populateMajors() {
-      const selectedCollege = collegeSelect.value;
-      majorSelect.innerHTML = ''; // 清空专业下拉菜单
-      majorsByCollege[selectedCollege].forEach(function(major) {
-          const option = document.createElement('option');
-          option.value = major;
-          option.textContent = major;
-          majorSelect.appendChild(option); // 添加专业选项到下拉菜单
-      });
+  function populateMajors(collegeSelect) {
+    const selectedCollege = collegeSelect.value;
+    const formElement = collegeSelect.parentNode;
+    const majorSelect = formElement.querySelector("select#majors");
+    majorSelect.innerHTML = ''; // 清空专业下拉菜单
+    majorsByCollege[selectedCollege].forEach(function(major) {
+        const option = document.createElement('option');
+        option.value = major;
+        option.textContent = major;
+        majorSelect.appendChild(option); // 添加专业选项到下拉菜单
+    });
   }
-
   // 监听学院选择事件
-  collegeSelect.addEventListener('change', populateMajors);
-
-// 初始化
-  populateMajors();
+  Array.from(collegeSelects).forEach(collegeSelect => {
+    collegeSelect.addEventListener('change', () => {  // collegeSelect.addEventListener("change", populateMajors(collegeSelect)); wrong
+      populateMajors(collegeSelect);
+    });
+  })
 
   // not working...?
   // document.querySelectorAll('#add').forEach(function(button) {

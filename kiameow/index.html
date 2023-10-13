@@ -46,19 +46,19 @@
       </form>
     </dialog>
 
-    <dialog id="add-dialog">
-      <h3>新增信息</h3>
+    <dialog id="change-dialog">
+      <h3>修改信息</h3>
     
       <form method="dialog">
         <label for="number">学号</label>
-        <input type="text" placeholder="22050701"><br />
+        <input type="text" placeholder="22050701" id="number"><br />
 
         <label for="name">姓名</label>
-        <input type="text" placeholder="张三"><br />
+        <input type="text" placeholder="张三" id="name" autocomplete="name"><br />
         
         
         <label for="colleges">学院</label>
-        <select id="colleges">
+        <select id="colleges" class="colleges">
           <option value="JSJ">计算机科学与工程学院</option>
           <option value="ZDH">自动化学院</option>
           <option value="RGZN">人工智能学院</option>
@@ -69,20 +69,60 @@
 
       
         <label for="majors">专业</label>
-        <select id="majors">
+        <select id="majors" class="majors">
 
         </select>
         <br />
 
         <label for="grade">年级</label>
-        <input type="text" placeholder="2015"><br />
+        <input type="text" placeholder="2015" id="grade"><br />
         <label for="class">班级</label>
-        <input type="text" placeholder="2"><br />
+        <input type="text" placeholder="2" id="class"><br />
         <label for="age">年龄</label>
-        <input type="text" placeholder="20"><br /><br/>
+        <input type="text" placeholder="20" id="age"><br /><br/>
 
         <button>取消</button>
-        <button>确认</button>
+        <button type="submit">确认</button>
+      </form>
+    </dialog>
+
+    <dialog id="add-dialog">
+      <h3>新增信息</h3>
+    
+      <form method="dialog">
+        <label for="number">学号</label>
+        <input type="text" placeholder="22050701" id="number"><br />
+
+        <label for="name">姓名</label>
+        <input type="text" placeholder="张三" id="name" autocomplete="name"><br />
+        
+        
+        <label for="colleges">学院</label>
+        <select id="colleges" class="colleges">
+          <option value="JSJ">计算机科学与工程学院</option>
+          <option value="ZDH">自动化学院</option>
+          <option value="RGZN">人工智能学院</option>
+          <option value="WLAQ">网络安全学院</option>
+          <option value="JX">机械学院</option> 
+        </select>
+        <br />
+
+      
+        <label for="majors">专业</label>
+        <select id="majors" class="majors">
+
+        </select>
+        <br />
+
+        <label for="grade">年级</label>
+        <input type="text" placeholder="2015" id="grade"><br />
+        <label for="class">班级</label>
+        <input type="text" placeholder="2" id="class"><br />
+        <label for="age">年龄</label>
+        <input type="text" placeholder="20" id="age"><br /><br/>
+
+        <button>取消</button>
+        <button type="submit">确认</button>
       </form>
     </dialog>
 

@@ -153,6 +153,10 @@ dialog button {
   padding-right: .5em;
 }
 
+/* .skeleton {
+  background-color: var(--element3);
+} */
+
 :root[color-mode="light"] {
   --surface1: #ffffff;
   --surface2: #f2f2f2;
