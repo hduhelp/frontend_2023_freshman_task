@@ -120,6 +120,7 @@ const update_student = (
 		</table>
 	</div>
 	<div class="student-control">
+		共 {{ Math.ceil((1.0 * props.data.length) / PAGE_MAX) }} 页（每页 {{ PAGE_MAX }} 条，共 {{ data.length }} 条）
 		<button
 			class="control control-button control-delete"
 			@click="delete_student"
@@ -250,8 +251,12 @@ const update_student = (
 
 .student-control {
 	display: flex;
-	justify-content: space-around;
+	justify-content: right;
 	padding-top: 1em;
+}
+
+.control-add {
+	margin-left: 1em;
 }
 
 .control-delete {

@@ -42,6 +42,7 @@ const submit_self = () => {
 					<input
 						:disabled="!editable"
 						v-model="student_id"
+						type="number"
 						class="input input-student-id"
 					/>
 				</div>
@@ -74,6 +75,7 @@ const submit_self = () => {
 					<input
 						:disabled="!editable"
 						v-model="year"
+						type="number"
 						class="input input-year"
 					/>
 				</div>
@@ -82,6 +84,7 @@ const submit_self = () => {
 					<input
 						:disabled="!editable"
 						v-model="class_id"
+						type="number"
 						class="input input-class-id"
 					/>
 				</div>
@@ -90,6 +93,7 @@ const submit_self = () => {
 					<input
 						:disabled="!editable"
 						v-model="old"
+						type="number"
 						class="input input-old"
 					/>
 				</div>
