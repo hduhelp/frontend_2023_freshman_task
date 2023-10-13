@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <link rel="stylesheet" href="styles\style.css"/ type="text/css"/>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <link rel="icon" href="web\test-site\images\R-C.png" size="16x16"/>
+</head>
+<body>
+  <h1>
+    学生信息管理系统
+  </h1>
+<div id="one">
+  <button id="add">
+    新增
+  </button>
+  <button id="delete">
+   删除 
+  </button>
+  </div>
+  <p> </p>
+  <table>
+   <thead>
+    <tr>
+  <th><input type="checkbox" id="checkAll"/></th>
+  <th>序号</th>
+  <th>学号</th>
+  <th>姓名</th>
+  <th>学院</th>
+  <th>专业</th>
+  <th>年级</th>
+  <th>班级</th>
+  <th>年龄</th>
+  <th>操作</th>
+    </tr>
+   </thead>
+   <tbody>
+   <tr>
+  <td><input type="checkbox" name="item"/></td>
+  <td>1</td>
+  <td id="num">11111111111</td>
+  <td>张三</td>
+  <td>通信学院</td>
+  <td>电子信息类</td>
+  <td>2000</td>
+  <td>6</td>
+  <td>21</td>
+  <td>查看 修改</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="item"/></td>
+      <td id="num">2</td>
+      <td>2222222222</td>
+      <td>李四</td>
+      <td>通信学院</td>
+      <td>电子信息类</td>
+      <td>2000</td>
+      <td>6</td>
+      <td>21</td>
+      <td>查看 修改</td>
+        </tr>
+   </tbody>
+  </table>
+  <p>第1页/共1页</p>
+  <div id="two">
+<button id="last">上一页</button>
+<button id="next">下一页</button>
+</div>
+<script src="scripts\main.js" defer></script>
+</body>
+</html>

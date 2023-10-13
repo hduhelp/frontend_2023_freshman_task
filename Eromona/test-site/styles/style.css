@@ -1,0 +1,70 @@
+body{
+  background-color:#ffeaaa;
+}
+h1{
+  font-family: 'Zhi Mang Xing', cursive;
+  font-size: 40px;
+  color:rgb(147, 184, 252);
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+}
+button{
+  border-radius: 8px;
+  color:white;
+  font-size:20px;
+  background-color:greenyellow;
+
+}
+#delete,#next{
+  background-color: red;
+}
+table{
+  font-family: 'ZCOOL KuaiLe', sans-serif;
+  table-layout:fixed;
+  width:100%;
+  border-collapse: collapse;
+  border:3px solid ;
+}
+thead th:nth-child(1){
+
+}
+th{
+  letter-spacing: 2px;
+}
+td{
+  letter-spacing: 1px;
+}
+tbody td{
+  text-align: center;
+}
+thead, tfoot {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+p{
+  font-size: 10px;
+}
+tbody tr:nth-child(odd){
+  background-color: white;
+}
+tbody tr:nth-child(even){
+  background-color:#bdbdbd ;
+}
+thead th:nth-child(1),thead th:nth-child(2),thead th:nth-child(8){
+  width:4%;
+}
+thead th:nth-child(4){
+  width:10%;
+}
+thead th:nth-child(9){
+  width:10%;
+}
+thead th:nth-child(5),thead th:nth-child(10){
+  width:12%;
+}
+thead th:nth-child(6),thead th:nth-child(3){
+  width:16%;
+}
+#two{
+  text-align: right;
+}
