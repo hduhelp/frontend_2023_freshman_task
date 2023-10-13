@@ -85,6 +85,7 @@
    }
 
    document.getElementById("delete").onclick=function(){
+      checks=document.querySelectorAll("table>tbody>tr>td>input");
       for(m=0;m<checks.length;m++){
          if(checks[m].checked){
             deletedTable=checks[m].parentNode.parentNode.parentNode;
