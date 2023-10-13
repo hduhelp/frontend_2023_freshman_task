@@ -1,27 +1,58 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, toRaw } from 'vue';
+
 import Student from './student.vue';
+import StudentDialog from './student-dialog.vue';
 
 const props = defineProps({ data: Array });
-const emit = defineEmits(['edit', 'delete'])
+const emit = defineEmits(['edit', 'delete', 'toggle']);
+
 const pages = ref(1);
 const PAGE_MAX = 20;
 
 const page_vaild = (offset) => {
-	if( pages.value + offset < 1 || pages.value + offset > Math.ceil( 1.0 * props.data.length / PAGE_MAX ) )
+	if (
+		pages.value + offset < 1 ||
+		pages.value + offset > Math.ceil((1.0 * props.data.length) / PAGE_MAX)
+	)
 		return false;
 	return true;
-}
-const page_add = (offset) => { 
+};
+const page_add = (offset) => {
 	pages.value += offset;
 };
 const check_display = (idx) => {
-	return ( pages.value - 1 ) * PAGE_MAX <= idx && idx < pages.value * PAGE_MAX;
+	return (pages.value - 1) * PAGE_MAX <= idx && idx < pages.value * PAGE_MAX;
+};
+const toggle_student = (idx) => {
+	emit('toggle', idx);
+};
+const delete_student = () => {
+	emit('delete');
 };
 
-const delete_student = (idx) => {
-	emit("delete", idx);
+const dialogs = ref([]);
+
+const push_dialog = (idx, title, editable) => {
+	dialogs.value.push({
+		title: title + props.data[idx].name,
+		editable: editable,
+		student: toRaw(props.data[idx])
+	});
 };
+
+const push_edit = (idx) => {
+	push_dialog(idx, '编辑 ', true);
+};
+
+const push_view = (idx) => {
+	push_dialog(idx, '查看 ', false);
+};
+
+const destory_dialog = (idx) => {
+	dialogs.value.splice( idx, 1 );
+}
+
 </script>
 
 <template>
@@ -29,6 +60,7 @@ const delete_student = (idx) => {
 		<table class="table">
 			<thead class="table-header">
 				<tr class="table-row">
+					<th class="table-cell table-checkbox"></th>
 					<th class="table-cell">#</th>
 					<th class="table-cell">学号</th>
 					<th class="table-cell">姓名</th>
@@ -41,11 +73,13 @@ const delete_student = (idx) => {
 				</tr>
 			</thead>
 			<tbody class="table-body">
-				<template v-for="(student, idx) in data" >
-					<Student 
+				<template v-for="(student, idx) in data">
+					<Student
 						:id="idx"
 						:key="idx"
-						@delete="delete_student"
+						@edit="push_edit(idx)"
+						@view="push_view(idx)"
+						@toggle="toggle_student"
 						v-if="check_display(idx)"
 						v-bind="student"
 					></Student>
@@ -53,21 +87,51 @@ const delete_student = (idx) => {
 			</tbody>
 		</table>
 	</div>
+	<div class="student-control">
+		<button
+			class="control control-button control-delete"
+			@click="delete_student"
+		>
+			删除
+		</button>
+	</div>
 	<div class="table-control">
-		<button class="control control-button control-left" :class="{ 'control-disable': !page_vaild(-1) }" @click="page_add(-1)">&lt;</button>
+		<button
+			class="control control-button control-left"
+			:class="{ 'control-disable': !page_vaild(-1) }"
+			@click="page_add(-1)"
+		>
+			&lt;
+		</button>
 		<span class="control control-text">{{ pages }}</span>
-		<button class="control control-button control-right" :class="{ 'control-disable': !page_vaild(1) }" @click="page_add(1)">&gt;</button>
+		<button
+			class="control control-button control-right"
+			:class="{ 'control-disable': !page_vaild(1) }"
+			@click="page_add(1)"
+		>
+			&gt;
+		</button>
+	</div>
+
+	<div class="dialog-set">
+		<template v-for="(dialog, idx) in dialogs">
+			<component
+				:is="StudentDialog"
+				v-bind="dialog"
+				@destory="destory_dialog(idx)"
+			></component>
+		</template>
 	</div>
 </template>
 
 <style scoped>
 .main {
-	height: 60em; 
+	height: 60em;
 	overflow: scroll;
 }
 
 .table {
-	width: calc( 100% - 1em );
+	width: calc(100% - 1em);
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0;
@@ -102,17 +166,22 @@ const delete_student = (idx) => {
 	transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
+.table-row:hover {
+	filter: brightness(90%);
+}
+
 .table-cell {
 	height: 1em;
 	padding: 1em;
 }
 
-.table-row:hover {
-	filter: brightness(90%);
+.table-checkbox {
+	max-width: 2em;
 }
 
 .table-control {
 	display: flex;
+	padding-top: 1em;
 	justify-content: space-between;
 }
 
@@ -120,30 +189,40 @@ const delete_student = (idx) => {
 	opacity: 0;
 }
 
-.table-control {
-	padding-top: 1em;
-}
-
 .control {
-	background: #90CAF9;
-	padding: .2em;
-	padding-left: .4em;
-	padding-right: .4em;
-	border-radius: .1em;
+	background: #90caf9;
+	padding: 0.2em;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	border-radius: 0.1em;
 	font-size: 1.2em;
 	color: #fff;
 	transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 }
 
 .control:hover {
-	background: #2196F3;
+	background: #2196f3;
 }
 
 .control-text {
-	background: #2196F3;
+	background: #2196f3;
 }
 
 .control-button {
 	border: none;
+}
+
+.student-control {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 1em;
+}
+
+.control-delete {
+	background: #ef5350;
+}
+
+.control-delete:hover {
+	background: #b71c1c;
 }
 </style>
